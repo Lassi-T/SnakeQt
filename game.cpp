@@ -29,21 +29,17 @@ void Game::draw()
 {
     scene_->clear();
 
-    for (int x = 0; x < WIDTH; x++) {
-        for (int y = 0; y < HEIGTH; y++) {
-            if (board_->grid_[x][y] != nullptr) {
-                QColor color = board_->grid_[x][y]->color_;
-                scene_->addRect((x * SQUARE_SIDE), (y * SQUARE_SIDE),
-                                SQUARE_SIDE, SQUARE_SIDE, QColor("black"), color);
-            }
-        }
+    for (Square* current = board_->head_; current != nullptr; current = current->next) {
+        QColor color = current->color_;
+        scene_->addRect((current->x * SQUARE_SIDE), (current->y * SQUARE_SIDE),
+                        SQUARE_SIDE, SQUARE_SIDE, QColor("black"), color);
     }
 }
 
 void Game::tick()
 {
-    qDebug() << "Working";
     draw();
+    board_->move();
 }
 
 void Game::on_startButton_clicked()
@@ -51,5 +47,5 @@ void Game::on_startButton_clicked()
     ui->startButton->setDisabled(true);
     timer_.setInterval(1000);
     timer_.start();
-    board_->initSnake();
+    board_->moveRight = true;
 }

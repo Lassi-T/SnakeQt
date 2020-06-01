@@ -9,9 +9,15 @@ class Board
 {
 public:
     Board(const int &width, const int &height);
-    void initSnake();
 
-    std::vector<std::vector<Square*>> grid_;
+    void move();
+
+    Square *head_;
+
+    bool moveRight = false;
+    bool moveLeft = false;
+    bool moveDown = false;
+    bool moveUp = false;
 
 private:
     const int width_;

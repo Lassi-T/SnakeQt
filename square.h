@@ -6,11 +6,9 @@
 struct Square
 {
     QColor color_;
-    /*
     int x;
     int y;
-    int piece_id;
-    */
+    Square *next;
 };
 
 #endif // SQUARE_H

@@ -25,9 +25,10 @@ Board::~Board()
 
 bool Board::move()
 {
+    Vec2 oldPos = head_->position;
+
     eatApple();
 
-    Vec2 oldPos = head_->position;
     head_->position += moveDir;
 
     if (head_->position.x >= width_) {
@@ -51,6 +52,7 @@ bool Board::move()
 
     for (Square* current = head_->next; current != nullptr; current = current->next) {
         Vec2 curPos = current->position;
+        lastPos_ = curPos;
         current->position = oldPos;
         oldPos = curPos;
     }
@@ -87,9 +89,18 @@ void Board::makeApple()
 
 void Board::eatApple()
 {
+    // Check for apple to eat
     if (apple_->position == head_->position) {
         delete apple_;
         makeApple();
+
+        Square *current = head_;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = new Square();
+        current->next->color_ = QColor("green");
+        current->next->position = lastPos_;
     }
 }
 

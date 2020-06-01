@@ -26,6 +26,7 @@ private:
     void eatApple();
     void deleteSnake(Square *square);
 
+    Vec2 lastPos_;
 
     std::default_random_engine randomEng_;
     std::uniform_int_distribution<int> distrX_;

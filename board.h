@@ -2,6 +2,8 @@
 #define BOARD_H
 
 #include <vector>
+#include <random>
+#include <time.h>
 
 #include "square.h"
 #include "vec2.h"
@@ -14,12 +16,20 @@ public:
 
     bool move();
 
-    Square *head_;
     Vec2 moveDir;
+    Square *head_;
+    Square *apple_;
 
 private:
     bool collision(Vec2 newPos);
+    void makeApple();
+    void eatApple();
     void deleteSnake(Square *square);
+
+
+    std::default_random_engine randomEng_;
+    std::uniform_int_distribution<int> distrX_;
+    std::uniform_int_distribution<int> distrY_;
 
     const int width_;
     const int heigth_;

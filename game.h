@@ -22,7 +22,6 @@ public:
     ~Game();
 
     void keyPressEvent(QKeyEvent *event);
-
     void draw();
 
 private slots:
@@ -34,7 +33,6 @@ private:
 
     QGraphicsScene *scene_;
     Board *board_;
-
     QTimer timer_;
 
     const int SQUARE_SIDE = 20;

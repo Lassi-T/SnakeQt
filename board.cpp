@@ -15,6 +15,7 @@ Board::Board(const int &width, const int &height)
 
         current->next->position = current->position + Vec2({-1, 0});
     }
+    makeApple();
 }
 
 Board::~Board()
@@ -24,8 +25,9 @@ Board::~Board()
 
 bool Board::move()
 {
-    Vec2 oldPos = head_->position;
+    eatApple();
 
+    Vec2 oldPos = head_->position;
     head_->position += moveDir;
 
     if (head_->position.x >= width_) {
@@ -56,14 +58,39 @@ bool Board::move()
 }
 
 
-bool Board::collision(Vec2 position)
+bool Board::collision(Vec2 newPos)
 {
     for (Square* current = head_->next; current != nullptr; current = current->next) {
-        if (current->position == position) {
+        if (current->position == newPos) {
             return true;
         }
     }
     return false;
+}
+
+void Board::makeApple()
+{
+    int seed = time(0);
+    randomEng_.seed(seed);
+
+    distrX_ = std::uniform_int_distribution<int>(0, width_ - 1);
+    distrX_(randomEng_);
+    int appleX = distrX_(randomEng_);
+
+    distrY_ = std::uniform_int_distribution<int>(0, heigth_ - 1);
+    int appleY = distrY_(randomEng_);
+
+    apple_ = new Square();
+    apple_->color_ = QColor("red");
+    apple_->position = {appleX, appleY};
+}
+
+void Board::eatApple()
+{
+    if (apple_->position == head_->position) {
+        delete apple_;
+        makeApple();
+    }
 }
 
 void Board::deleteSnake(Square *square)

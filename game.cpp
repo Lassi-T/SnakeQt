@@ -40,14 +40,17 @@ void Game::draw()
                         (current->position.y * SQUARE_SIDE),
                         SQUARE_SIDE, SQUARE_SIDE, QColor("black"), color);
     }
+    scene_->addRect((board_->apple_->position.x * SQUARE_SIDE),
+                    (board_->apple_->position.y * SQUARE_SIDE),
+                    SQUARE_SIDE, SQUARE_SIDE, QColor("red"), board_->apple_->color_);
 }
 
 void Game::tick()
 {
     draw();
     if (!board_->move()) {
-        timer_.stop();
         scene_->clear();
+        timer_.stop();
         ui->gameStatusLabel->setText("Game Over!");
         ui->startButton->setDisabled(false);
         delete board_;

@@ -3,23 +3,24 @@
 
 #include <vector>
 
-#include <square.h>
+#include "square.h"
+#include "vec2.h"
 
 class Board
 {
 public:
     Board(const int &width, const int &height);
+    ~Board();
 
-    void move();
+    bool move();
 
     Square *head_;
-
-    bool moveRight = false;
-    bool moveLeft = false;
-    bool moveDown = false;
-    bool moveUp = false;
+    Vec2 moveDir;
 
 private:
+    bool collision(Vec2 newPos);
+    void deleteSnake(Square *square);
+
     const int width_;
     const int heigth_;
 };

@@ -37,6 +37,31 @@
      <string>Start</string>
     </property>
    </widget>
+   <widget class="QLabel" name="gameStatusLabel">
+    <property name="geometry">
+     <rect>
+      <x>254</x>
+      <y>265</y>
+      <width>271</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

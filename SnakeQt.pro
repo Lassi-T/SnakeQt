@@ -23,7 +23,8 @@ SOURCES += \
 HEADERS += \
     board.h \
     game.h \
-    square.h
+    square.h \
+    vec2.h
 
 FORMS += \
     game.ui

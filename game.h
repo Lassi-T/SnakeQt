@@ -5,8 +5,9 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QDebug>
+#include <QKeyEvent>
 
-#include <board.h>
+#include "board.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -19,6 +20,8 @@ class Game : public QMainWindow
 public:
     Game(QWidget *parent = nullptr);
     ~Game();
+
+    void keyPressEvent(QKeyEvent *event);
 
     void draw();
 

@@ -3,11 +3,12 @@
 
 #include <QColor>
 
+#include "vec2.h"
+
 struct Square
 {
     QColor color_;
-    int x;
-    int y;
+    Vec2 position;
     Square *next;
 };
 

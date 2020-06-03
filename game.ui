@@ -23,6 +23,9 @@
       <height>461</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(57, 255, 80);</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="startButton">
     <property name="geometry">
@@ -73,6 +76,29 @@
     </property>
     <property name="text">
      <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="scoreBoard">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>20</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>30</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Score:</string>
     </property>
    </widget>
   </widget>

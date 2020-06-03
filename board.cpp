@@ -4,14 +4,14 @@ Board::Board(const int &width, const int &height)
     : width_(width), heigth_(height)
 {
     head_ = new Square();
-    head_->color_ = QColor("blue");
+    head_->color_ = QColor("orange");
     head_->position = {width_ / 2 + 2, heigth_ / 2};
 
     int i = 0;
     for (Square* current = head_; current != nullptr; current = current->next) {
         if (i++ >= 3) break;
         current->next = new Square();
-        current->next->color_ = QColor("green");
+        current->next->color_ = QColor("yellow");
 
         current->next->position = current->position + Vec2({-1, 0});
     }
@@ -59,6 +59,10 @@ bool Board::move()
     return true;
 }
 
+int Board::getScore()
+{
+    return score_;
+}
 
 bool Board::collision(Vec2 newPos)
 {
@@ -99,8 +103,10 @@ void Board::eatApple()
             current = current->next;
         }
         current->next = new Square();
-        current->next->color_ = QColor("green");
+        current->next->color_ = QColor("yellow");
         current->next->position = lastPos_;
+
+        score_ += 20;
     }
 }
 

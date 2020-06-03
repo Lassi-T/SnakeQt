@@ -15,6 +15,7 @@ public:
     ~Board();
 
     bool move();
+    int getScore();
 
     Vec2 moveDir;
     Square *head_;
@@ -31,6 +32,8 @@ private:
     std::default_random_engine randomEng_;
     std::uniform_int_distribution<int> distrX_;
     std::uniform_int_distribution<int> distrY_;
+
+    int score_ = 0;
 
     const int width_;
     const int heigth_;

@@ -48,11 +48,13 @@ void Game::draw()
 void Game::tick()
 {
     draw();
+    ui->scoreBoard->display(board_->getScore());
     if (!board_->move()) {
         scene_->clear();
         timer_.stop();
         ui->gameStatusLabel->setText("Game Over!");
         ui->startButton->setDisabled(false);
+        ui->startButton->setText("Restart");
         delete board_;
     }
 }
@@ -64,8 +66,9 @@ void Game::on_startButton_clicked()
 
     ui->gameStatusLabel->setText("");
     ui->startButton->setDisabled(true);
+    ui->scoreBoard->display(board_->getScore());
 
-    timer_.setInterval(100);
+    timer_.setInterval(300);
     timer_.start();
 
     board_->moveDir = {1, 0};
